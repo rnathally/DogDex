@@ -19,13 +19,6 @@ Se for bem-sucedido, o cachorro é registrado na sua **DogDex**, exibindo:
 
 ---
 
-## Impacto Social e Comunidade
-
-* **Conquistas Comunitárias:** Cada escaneamento individual contribui para uma meta global. *Exemplo: Atingir 1.000 escaneamentos = doação de 20kg de ração para os cães do campus.*
-* **Parcerias com Petshops:** Ao alcançar a marca de **100 usuários com a DogDex completa**, o projeto buscará parcerias com petshops locais. As lojas podem doar ração e medicamentos em troca de aparecerem no aplicativo como parceiros oficiais do projeto.
-
----
-
 ## Estrutura da Aplicação
 
 ### Área do Usuário
