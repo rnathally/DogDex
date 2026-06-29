@@ -4,7 +4,7 @@ import { MdEmail } from "react-icons/md";
 
 import Navbar from "../../components/navbar/Navbar";
 import { supabase } from "../../lib/supabase";
-import bg from "../../assets/fundo1.jpg";
+import bg from "../../assets/Fundoverde.png";
 
 import "../login/Login.css";
 import "./ForgotPassword.css";
@@ -57,7 +57,21 @@ export default function ForgotPassword() {
   }
 
   return (
-    <div className="login-page" style={{ backgroundImage: `url(${bg})` }}>
+    <div className="login-page">
+      <img
+        src={bg}
+        alt=""
+        className="login-bg-fill"
+        aria-hidden="true"
+      />
+
+      <img
+        src={bg}
+        alt=""
+        className="login-bg"
+        aria-hidden="true"
+      />
+
       <Navbar />
 
       <div className="login-overlay">
@@ -89,16 +103,10 @@ export default function ForgotPassword() {
             </div>
 
             {message && (
-              <p className={`login-message ${messageType}`}>
-                {message}
-              </p>
+              <p className={`login-message ${messageType}`}>{message}</p>
             )}
 
-            <button
-              type="submit"
-              className="login-submit"
-              disabled={loading}
-            >
+            <button type="submit" className="login-submit" disabled={loading}>
               {loading ? "Enviando..." : "Enviar link"}
             </button>
           </form>

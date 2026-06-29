@@ -4,7 +4,7 @@ import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 
 import Navbar from "../../components/navbar/Navbar";
 import { supabase } from "../../lib/supabase";
-import bg from "../../assets/fundo1.jpg"; 
+import bg from "../../assets/Fundoverde.png";
 
 import "../login/Login.css";
 import "./ResetPassword.css";
@@ -108,7 +108,21 @@ export default function ResetPassword() {
   }
 
   return (
-    <div className="login-page" style={{ backgroundImage: `url(${bg})` }}>
+    <div className="login-page">
+      <img
+        src={bg}
+        alt=""
+        className="login-bg-fill"
+        aria-hidden="true"
+      />
+
+      <img
+        src={bg}
+        alt=""
+        className="login-bg"
+        aria-hidden="true"
+      />
+
       <Navbar />
 
       <div className="login-overlay">
@@ -150,9 +164,7 @@ export default function ResetPassword() {
                 type={showConfirmPassword ? "text" : "password"}
                 placeholder="Confirmar nova senha"
                 value={confirmPassword}
-                onChange={(event) =>
-                  setConfirmPassword(event.target.value)
-                }
+                onChange={(event) => setConfirmPassword(event.target.value)}
                 required
                 disabled={checkingSession}
               />
@@ -175,9 +187,7 @@ export default function ResetPassword() {
             </div>
 
             {message && (
-              <p className={`login-message ${messageType}`}>
-                {message}
-              </p>
+              <p className={`login-message ${messageType}`}>{message}</p>
             )}
 
             <button
