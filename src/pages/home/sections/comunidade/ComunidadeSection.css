@@ -482,6 +482,15 @@
   }
 
   .comunidade-top {
+  max-width: 100%;
+  overflow: visible;
+}
+
+.comunidade-content {
+  overflow: visible;
+}
+
+  .comunidade-top {
     margin-bottom: 34px;
   }
 
@@ -490,11 +499,22 @@
     font-size: 8px;
   }
 
-  .comunidade-top h2 {
-    font-size: 38px;
-    line-height: 1.15;
-  }
+ .comunidade-top h2 {
+  width: 100%;
+  max-width: 100%;
 
+  font-size: clamp(26px, 8.2vw, 31px);
+  line-height: 1.35;
+  letter-spacing: -1px;
+
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: keep-all;
+
+  text-shadow:
+    4px 4px 0 var(--color-shadow),
+    7px 7px 0 rgba(3, 4, 3, 0.16);
+}
   .comunidade-top p {
     font-size: 15px;
     line-height: 1.7;
