@@ -8,8 +8,8 @@ import SobreSection from "../pages/home/sections/sobre/SobreSection";
 import ContatoSection from "../pages/home/sections/contato/ContatoSection";
 
 import Login from "../pages/login/Login";
-import ForgotPassword from "../pages/forgotPassword/ForgotPassword";
-import ResetPassword from "../pages/resetPassword/ResetPassword";
+import ForgotPassword from "../pages/forgotpassword/ForgotPassword";
+import ResetPassword from "../pages/resetpassword/ResetPassword";
 
 import Dashboard from "../pages/dashboard/Dashboard";
 import DogDex from "../pages/dogdex/DogDex";
