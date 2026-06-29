@@ -1,0 +1,531 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap");
+
+:root {
+  --color-cream: #f7f4d5;
+  --color-paper: #fffdf0;
+  --color-pink: #cc385b;
+  --color-yellow: #ffca2c;
+  --color-green: #1c611c;
+  --color-brown: #373525;
+  --color-soft-brown: #b28043;
+  --color-shadow: #030403;
+  --dashboard-sidebar-width: 232px;
+}
+
+/* =========================================
+   1. DESKTOP SIDEBAR
+   ========================================= */
+
+.dashboard-app-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 80;
+
+  width: var(--dashboard-sidebar-width);
+  height: 100vh;
+  height: 100svh;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  padding: 20px 16px;
+  box-sizing: border-box;
+
+  background: var(--color-paper);
+  color: var(--color-brown);
+
+  border-right: 4px solid var(--color-shadow);
+  box-shadow: 6px 0 0 var(--color-shadow);
+
+  overflow-y: auto;
+}
+
+.dashboard-app-nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(55, 53, 37, 0.04) 0,
+    rgba(55, 53, 37, 0.04) 1px,
+    transparent 1px,
+    transparent 10px
+  );
+
+  pointer-events: none;
+}
+
+.dashboard-app-nav > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================
+   2. BRAND
+   ========================================= */
+
+.dashboard-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding-bottom: 18px;
+
+  border-bottom: 3px solid var(--color-shadow);
+}
+
+.dashboard-nav-logo-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+}
+
+.dashboard-nav-logo {
+  width: 58px;
+  height: auto;
+  object-fit: contain;
+
+  image-rendering: pixelated;
+
+  filter: drop-shadow(3px 3px 0 rgba(3, 4, 3, 0.35));
+}
+
+.dashboard-nav-title {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dashboard-nav-title span {
+  color: var(--color-pink);
+
+  font-family: "Press Start 2P", monospace;
+  font-size: 8px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.dashboard-nav-title strong {
+  color: var(--color-brown);
+
+  font-family: "Press Start 2P", monospace;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* =========================================
+   3. MENU
+   ========================================= */
+
+.dashboard-nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dashboard-nav-item,
+.dashboard-nav-scan-button {
+  min-height: 48px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+
+  padding: 0 13px;
+  box-sizing: border-box;
+
+  border: 3px solid var(--color-shadow);
+  border-radius: 6px;
+
+  font-family: "Press Start 2P", monospace;
+  font-size: 9px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  box-shadow: 4px 4px 0 var(--color-shadow);
+
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    filter 0.16s ease,
+    background-color 0.16s ease,
+    color 0.16s ease;
+}
+
+.dashboard-nav-item {
+  background: transparent;
+  color: var(--color-brown);
+}
+
+.dashboard-nav-item,
+.dashboard-nav-item:visited,
+.dashboard-nav-item:hover,
+.dashboard-nav-item:active,
+.dashboard-nav-item:focus,
+.dashboard-nav-scan-button,
+.dashboard-nav-scan-button:visited,
+.dashboard-nav-scan-button:hover,
+.dashboard-nav-scan-button:active,
+.dashboard-nav-scan-button:focus {
+  text-decoration: none;
+}
+
+.dashboard-nav-item svg,
+.dashboard-nav-scan-button svg {
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.dashboard-nav-item:hover {
+  background: rgba(255, 202, 44, 0.16);
+  color: var(--color-shadow);
+}
+
+.dashboard-nav-item.active {
+  background: var(--color-yellow);
+  color: var(--color-shadow);
+}
+
+.dashboard-nav-scan-button {
+  background: var(--color-pink);
+  color: var(--color-cream);
+}
+
+.dashboard-nav-scan-button.active {
+  background: var(--color-pink);
+  color: var(--color-cream);
+}
+
+.dashboard-nav-item:hover,
+.dashboard-nav-scan-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--color-shadow);
+}
+
+.dashboard-nav-item:active,
+.dashboard-nav-scan-button:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--color-shadow);
+}
+
+.dashboard-nav-scan-button:hover {
+  filter: brightness(1.05);
+}
+
+/* =========================================
+   4. LOGOUT DESKTOP
+   ========================================= */
+
+.dashboard-nav-logout {
+  width: 100%;
+  min-height: 44px;
+
+  margin-top: auto;
+  padding: 0 12px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border: 3px solid var(--color-shadow);
+  border-radius: 6px;
+
+  background: var(--color-brown);
+  color: var(--color-cream);
+
+  font-family: "Press Start 2P", monospace;
+  font-size: 9px;
+  line-height: 1.4;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  box-shadow: 4px 4px 0 var(--color-shadow);
+
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    filter 0.16s ease;
+}
+
+.dashboard-nav-logout:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--color-shadow);
+  filter: brightness(1.05);
+}
+
+.dashboard-nav-logout:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--color-shadow);
+}
+
+/* =========================================
+   5. LOGOUT MOBILE STICKY
+   ========================================= */
+
+.dashboard-mobile-top-actions {
+  display: none;
+}
+
+.dashboard-mobile-logout-button {
+  display: none;
+}
+
+/* =========================================
+   6. ACESSIBILIDADE
+   ========================================= */
+
+.dashboard-nav-logo-link,
+.dashboard-nav-item,
+.dashboard-nav-scan-button,
+.dashboard-nav-logout,
+.dashboard-mobile-logout-button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dashboard-nav-logo-link:focus,
+.dashboard-nav-item:focus,
+.dashboard-nav-scan-button:focus,
+.dashboard-nav-logout:focus,
+.dashboard-mobile-logout-button:focus {
+  outline: none;
+}
+
+.dashboard-nav-logo-link:focus-visible,
+.dashboard-nav-item:focus-visible,
+.dashboard-nav-scan-button:focus-visible,
+.dashboard-nav-logout:focus-visible,
+.dashboard-mobile-logout-button:focus-visible {
+  outline: 3px solid var(--color-pink);
+  outline-offset: 4px;
+}
+
+/* =========================================
+   7. MOBILE BOTTOM NAV
+   ========================================= */
+
+@media (max-width: 900px) {
+  .dashboard-mobile-top-actions {
+    position: sticky;
+    top: 10px;
+    z-index: 999999;
+
+    height: 0;
+
+    display: flex;
+    justify-content: flex-end;
+
+    padding-right: 10px;
+    box-sizing: border-box;
+
+    pointer-events: none;
+  }
+
+  .dashboard-mobile-logout-button {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    margin: 0;
+
+    border: 3px solid var(--color-shadow);
+    border-radius: 6px;
+
+    background: var(--color-paper);
+    color: var(--color-brown);
+
+    font-size: 0;
+    line-height: 0;
+
+    box-shadow: 4px 4px 0 var(--color-shadow);
+
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  .dashboard-mobile-logout-button svg {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+  }
+
+  .dashboard-mobile-logout-button:active {
+    transform: scale(0.94);
+    box-shadow: 2px 2px 0 var(--color-shadow);
+  }
+
+  .dashboard-app-nav {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: auto;
+    min-height: auto;
+
+    display: block;
+
+    padding: 9px 10px;
+    padding-bottom: calc(9px + env(safe-area-inset-bottom));
+
+    background: rgba(255, 253, 240, 0.98);
+
+    border-right: none;
+    border-top: 3px solid var(--color-shadow);
+
+    box-shadow: 0 -4px 0 rgba(3, 4, 3, 0.08);
+
+    overflow: visible;
+  }
+
+  .dashboard-app-nav::before,
+  .dashboard-nav-brand {
+    display: none;
+  }
+
+  .dashboard-app-nav > .dashboard-nav-logout,
+  .dashboard-nav-logout {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .dashboard-nav-menu {
+    width: min(100%, 520px);
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .dashboard-nav-item,
+  .dashboard-nav-scan-button {
+    min-height: 54px;
+
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+
+    padding: 6px 4px;
+
+    border-width: 2px;
+    border-radius: 7px;
+
+    font-size: 7px;
+    text-align: center;
+
+    box-shadow: 2px 2px 0 var(--color-shadow);
+
+    transform: none;
+  }
+
+  .dashboard-nav-scan-button {
+    min-height: 54px;
+    background: var(--color-pink);
+  }
+
+  .dashboard-nav-item:hover,
+  .dashboard-nav-scan-button:hover,
+  .dashboard-nav-item.active:hover {
+    transform: none;
+    box-shadow: 2px 2px 0 var(--color-shadow);
+  }
+
+  .dashboard-nav-item:active,
+  .dashboard-nav-scan-button:active {
+    transform: scale(0.96);
+    box-shadow: 1px 1px 0 var(--color-shadow);
+  }
+
+  .dashboard-nav-item svg,
+  .dashboard-nav-scan-button svg {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 430px) {
+  .dashboard-mobile-top-actions {
+    top: 10px;
+    padding-right: 10px;
+  }
+
+  .dashboard-mobile-logout-button {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    min-height: 38px;
+  }
+
+  .dashboard-mobile-logout-button svg {
+    width: 15px;
+    height: 15px;
+    font-size: 15px;
+  }
+
+  .dashboard-app-nav {
+    padding: 8px;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+  }
+
+  .dashboard-nav-menu {
+    gap: 6px;
+  }
+
+  .dashboard-nav-item,
+  .dashboard-nav-scan-button {
+    min-height: 50px;
+    font-size: 6.5px;
+  }
+}
+
+@media (max-width: 360px) {
+  .dashboard-nav-item span,
+  .dashboard-nav-scan-button span {
+    display: none;
+  }
+
+  .dashboard-nav-item,
+  .dashboard-nav-scan-button {
+    min-height: 46px;
+  }
+}
+
+/* =========================================
+   8. REDUZ MOVIMENTO
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-nav-item,
+  .dashboard-nav-scan-button,
+  .dashboard-nav-logout,
+  .dashboard-mobile-logout-button {
+    transition: none;
+  }
+}

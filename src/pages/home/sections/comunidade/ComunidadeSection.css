@@ -1,0 +1,562 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+:root {
+  --color-pink: #9c2743;
+  --color-green: #1c611c;
+  --color-dark-green: #004d4a;
+  --color-game-blue: #1e2c86;
+  --color-cream: #f7f4d5;
+  --color-shadow: #030403;
+  --color-yellow: #ffca2c;
+}
+
+.comunidade-section {
+  position: relative;
+
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 110px 32px;
+  box-sizing: border-box;
+
+  overflow: hidden;
+  scroll-margin-top: 68px;
+
+  background: var(--color-cream);
+  color: var(--color-dark-green);
+}
+
+/* FUNDO PIXELADO */
+
+.comunidade-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background-image:
+    linear-gradient(rgba(0, 77, 74, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 77, 74, 0.055) 1px, transparent 1px);
+
+  background-size: 26px 26px;
+
+  pointer-events: none;
+}
+
+.comunidade-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(1160px, 100%);
+}
+
+/* TOPO */
+
+.comunidade-top {
+  max-width: 840px;
+  margin-bottom: 42px;
+}
+
+.comunidade-kicker {
+  display: inline-block;
+
+  margin-bottom: 20px;
+  padding: 13px 16px;
+
+  border: 3px solid var(--color-dark-green);
+  border-radius: 5px;
+
+  background: var(--color-yellow);
+  color: var(--color-dark-green);
+
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: 9px;
+  line-height: 1.5;
+  text-transform: uppercase;
+
+  box-shadow: 5px 5px 0 var(--color-shadow);
+}
+
+.comunidade-top h2 {
+  margin: 0 0 18px;
+
+  color: var(--color-pink);
+
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: clamp(18px, 7vw, 48px);
+  line-height: 1.1;
+  text-transform: uppercase;
+
+  text-shadow:
+    5px 5px 0 var(--color-shadow),
+    9px 9px 0 rgba(3, 4, 3, 0.16);
+}
+
+.comunidade-top p {
+  max-width: 720px;
+  margin: 0;
+
+  color: rgba(0, 77, 74, 0.86);
+
+  font-size: 17px;
+  line-height: 1.75;
+  font-weight: 800;
+}
+
+/* PAINEL PRINCIPAL */
+
+.comunidade-game-panel {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 34px;
+  align-items: stretch;
+}
+
+/* CARD PRINCIPAL */
+
+.comunidade-main-screen {
+  position: relative;
+
+  min-height: 420px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 42px 38px;
+  box-sizing: border-box;
+
+  border: 5px solid var(--color-shadow);
+  border-radius: 8px;
+
+  background: var(--color-game-blue);
+  color: var(--color-cream);
+
+  box-shadow:
+    10px 10px 0 var(--color-shadow),
+    inset 0 0 0 4px rgba(247, 244, 213, 0.08);
+
+  overflow: hidden;
+
+  animation: comunidade-screen-breath 5.8s ease-in-out infinite;
+}
+
+/* RISCOS DE TELA */
+
+.comunidade-main-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(3, 4, 3, 0.1) 50%
+    ),
+    radial-gradient(
+      ellipse at center,
+      transparent 0%,
+      transparent 58%,
+      rgba(3, 4, 3, 0.22) 100%
+    );
+
+  background-size:
+    100% 5px,
+    100% 100%;
+
+  opacity: 0.72;
+
+  pointer-events: none;
+}
+
+.comunidade-main-screen::after {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -30%;
+  z-index: 1;
+
+  width: 50%;
+  height: 180%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(247, 244, 213, 0.09),
+    transparent
+  );
+
+  transform: rotate(18deg);
+  animation: comunidade-screen-scan 6.2s ease-in-out infinite;
+
+  pointer-events: none;
+}
+
+.comunidade-main-screen > * {
+  position: relative;
+  z-index: 2;
+}
+
+.comunidade-main-screen h3 {
+  margin: 0 0 22px;
+
+  color: var(--color-cream);
+
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: clamp(16px, 2vw, 23px);
+  line-height: 1.65;
+
+  text-shadow: 4px 4px 0 var(--color-shadow);
+}
+
+.comunidade-main-screen p {
+  margin: 0 0 18px;
+
+  color: rgba(247, 244, 213, 0.92);
+
+  font-size: 16px;
+  line-height: 1.85;
+  font-weight: 700;
+}
+
+.comunidade-main-screen p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* MISSÕES */
+
+.comunidade-missions {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.comunidade-mission {
+  position: relative;
+
+  min-height: 128px;
+
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  align-items: center;
+  gap: 20px;
+
+  padding: 24px;
+  box-sizing: border-box;
+
+  border: 5px solid var(--color-shadow);
+  border-radius: 8px;
+
+  box-shadow: 8px 8px 0 var(--color-shadow);
+
+  overflow: hidden;
+
+  animation: comunidade-card-float 4.8s ease-in-out infinite;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.comunidade-mission::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0%,
+      transparent 36%,
+      rgba(247, 244, 213, 0.16) 42%,
+      transparent 48%,
+      transparent 100%
+    );
+
+  transform: translateX(-130%);
+  animation: comunidade-card-light 5.6s ease-in-out infinite;
+
+  pointer-events: none;
+}
+
+.comunidade-mission > * {
+  position: relative;
+  z-index: 2;
+}
+
+.comunidade-mission:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.comunidade-mission:nth-child(2) {
+  animation-delay: 0.7s;
+}
+
+.comunidade-mission:nth-child(3) {
+  animation-delay: 1.4s;
+}
+
+.comunidade-mission:nth-child(1)::before {
+  animation-delay: 0.2s;
+}
+
+.comunidade-mission:nth-child(2)::before {
+  animation-delay: 1.2s;
+}
+
+.comunidade-mission:nth-child(3)::before {
+  animation-delay: 2.2s;
+}
+
+.comunidade-mission:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 4px 4px 0 var(--color-shadow);
+  filter: brightness(1.04);
+}
+
+.comunidade-mission-dark {
+  background: var(--color-green);
+  color: var(--color-cream);
+}
+
+.comunidade-mission-green {
+  background: var(--color-game-blue);
+  color: var(--color-cream);
+}
+
+.comunidade-mission-pink {
+  background: var(--color-pink);
+  color: var(--color-cream);
+}
+
+.comunidade-mission-number {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 4px solid currentColor;
+  border-radius: 6px;
+
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: 13px;
+
+  box-shadow: 4px 4px 0 rgba(3, 4, 3, 0.42);
+}
+
+.comunidade-mission h4 {
+  margin: 0 0 10px;
+
+  color: var(--color-cream);
+
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.comunidade-mission p {
+  margin: 0;
+
+  color: rgba(247, 244, 213, 0.9);
+
+  font-size: 14px;
+  line-height: 1.65;
+  font-weight: 800;
+}
+
+/* ANIMAÇÕES */
+
+@keyframes comunidade-card-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-5px) rotate(-0.5deg);
+  }
+
+  50% {
+    transform: translateY(2px) rotate(0.4deg);
+  }
+
+  75% {
+    transform: translateY(-3px) rotate(0.3deg);
+  }
+}
+
+@keyframes comunidade-card-light {
+  0%,
+  34% {
+    transform: translateX(-130%);
+    opacity: 0;
+  }
+
+  45% {
+    opacity: 1;
+  }
+
+  62% {
+    transform: translateX(130%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(130%);
+    opacity: 0;
+  }
+}
+
+@keyframes comunidade-screen-breath {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes comunidade-screen-scan {
+  0%,
+  30% {
+    transform: translateX(-140%) rotate(18deg);
+    opacity: 0;
+  }
+
+  45% {
+    opacity: 1;
+  }
+
+  62% {
+    transform: translateX(280%) rotate(18deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(280%) rotate(18deg);
+    opacity: 0;
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+  .comunidade-section {
+    min-height: auto;
+    padding: 90px 24px;
+  }
+
+  .comunidade-game-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .comunidade-main-screen {
+    min-height: auto;
+  }
+
+  .comunidade-missions {
+    grid-template-rows: auto;
+  }
+}
+
+/* CELULAR */
+
+@media (max-width: 560px) {
+  .comunidade-section {
+    padding: 76px 16px;
+    scroll-margin-top: 64px;
+  }
+
+  .comunidade-section::before {
+    background-size: 20px 20px;
+  }
+
+  .comunidade-top {
+    margin-bottom: 34px;
+  }
+
+  .comunidade-kicker {
+    padding: 12px 14px;
+    font-size: 8px;
+  }
+
+  .comunidade-top h2 {
+    font-size: 38px;
+    line-height: 1.15;
+  }
+
+  .comunidade-top p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .comunidade-main-screen {
+    padding: 30px 22px;
+    border-width: 4px;
+
+    box-shadow:
+      6px 6px 0 var(--color-shadow),
+      inset 0 0 0 3px rgba(247, 244, 213, 0.08);
+  }
+
+  .comunidade-main-screen h3 {
+    margin: 0 0 20px;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .comunidade-main-screen p {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .comunidade-mission {
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    padding: 22px;
+    border-width: 4px;
+
+    box-shadow: 6px 6px 0 var(--color-shadow);
+  }
+
+  .comunidade-mission:hover {
+    transform: none;
+    box-shadow: 6px 6px 0 var(--color-shadow);
+  }
+
+  .comunidade-mission-number {
+    width: 50px;
+    height: 50px;
+    font-size: 11px;
+  }
+
+  .comunidade-mission h4 {
+    font-size: 10px;
+  }
+
+  .comunidade-mission p {
+    font-size: 13px;
+  }
+}
+
+/* ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+  .comunidade-main-screen,
+  .comunidade-main-screen::after,
+  .comunidade-mission,
+  .comunidade-mission::before {
+    animation: none;
+  }
+}

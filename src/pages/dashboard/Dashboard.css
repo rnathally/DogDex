@@ -1,0 +1,715 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap");
+
+:root {
+  --color-cream: #f7f4d5;
+  --color-paper: #fffdf0;
+  --color-pink: #cc385b;
+  --color-yellow: #ffca2c;
+  --color-green: #1c611c;
+  --color-brown: #373525;
+  --color-soft-brown: #b28043;
+  --color-shadow: #030403;
+  --dashboard-sidebar-width: 232px;
+}
+
+/* =========================================
+   1. PÁGINA
+   ========================================= */
+
+.dashboard-page {
+  min-height: 100vh;
+
+  color: var(--color-brown);
+
+  background:
+    linear-gradient(rgba(247, 244, 213, 0.96), rgba(247, 244, 213, 0.96)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(55, 53, 37, 0.05) 0,
+      rgba(55, 53, 37, 0.05) 1px,
+      transparent 1px,
+      transparent 18px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(55, 53, 37, 0.04) 0,
+      rgba(55, 53, 37, 0.04) 1px,
+      transparent 1px,
+      transparent 18px
+    );
+}
+
+.dashboard-content {
+  width: min(
+    1080px,
+    calc(100vw - var(--dashboard-sidebar-width) - 180px)
+  );
+
+  margin-left: calc(var(--dashboard-sidebar-width) + 300px);
+  margin-right: auto;
+
+  padding: 42px 0 64px;
+}
+
+/* =========================================
+   2. TOPO
+   ========================================= */
+
+.dashboard-top-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 32px;
+
+  margin-bottom: 24px;
+}
+
+.dashboard-intro {
+  min-width: 0;
+}
+
+.dashboard-kicker,
+.dashboard-section-label {
+  display: inline-flex;
+  align-items: center;
+
+  color: var(--color-pink);
+
+  font-family: "Press Start 2P", monospace;
+  font-size: 10px;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.dashboard-intro h1 {
+  margin: 12px 0 10px;
+
+  color: var(--color-brown);
+
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(26px, 3.4vw, 48px);
+  line-height: 1.25;
+
+  text-shadow:
+    3px 3px 0 var(--color-yellow),
+    6px 6px 0 rgba(3, 4, 3, 0.16);
+}
+
+.dashboard-intro p {
+  max-width: 760px;
+  margin: 0;
+
+  color: rgba(55, 53, 37, 0.78);
+
+  font-family: "VT323", monospace;
+  font-size: 27px;
+  line-height: 1.15;
+}
+
+/* =========================================
+   3. PERFIL TOPO DIREITA
+   ========================================= */
+
+.dashboard-profile-chip {
+  width: fit-content;
+  min-width: 0;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 14px 16px;
+  box-sizing: border-box;
+
+  border: 3px solid var(--color-shadow);
+  border-radius: 8px;
+
+  background: var(--color-paper);
+  color: var(--color-brown);
+
+  box-shadow: 4px 4px 0 var(--color-shadow);
+}
+
+.dashboard-profile-avatar {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 6px;
+
+  background: var(--color-yellow);
+  color: var(--color-shadow);
+
+  font-size: 21px;
+
+  box-shadow: none;
+
+  flex-shrink: 0;
+}
+
+.dashboard-profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  min-width: 0;
+}
+
+.dashboard-profile-info strong {
+  color: var(--color-brown);
+
+  font-family: "Press Start 2P", monospace;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.dashboard-profile-info small {
+  color: rgba(55, 53, 37, 0.62);
+
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+/* =========================================
+   4. PROGRESSO
+   ========================================= */
+
+.dashboard-progress-card {
+  display: grid;
+  grid-template-columns: 1fr 170px;
+  align-items: center;
+  gap: 26px;
+
+  margin-bottom: 22px;
+  padding: 26px;
+
+  border: 4px solid var(--color-shadow);
+  border-radius: 8px;
+
+  background: var(--color-paper);
+  color: var(--color-brown);
+
+  box-shadow: 7px 7px 0 var(--color-shadow);
+}
+
+.progress-main h2 {
+  margin: 12px 0 12px;
+
+  color: var(--color-brown);
+
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(17px, 2vw, 25px);
+  line-height: 1.5;
+}
+
+.progress-main p {
+  max-width: 720px;
+  margin: 0 0 22px;
+
+  color: rgba(55, 53, 37, 0.72);
+
+  font-family: "VT323", monospace;
+  font-size: 24px;
+  line-height: 1.16;
+}
+
+.progress-bar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  margin-bottom: 9px;
+
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.progress-bar-header span {
+  color: rgba(55, 53, 37, 0.72);
+}
+
+.progress-bar-header strong {
+  color: var(--color-pink);
+}
+
+.progress-bar {
+  height: 18px;
+
+  overflow: hidden;
+
+  border: 3px solid var(--color-shadow);
+  border-radius: 4px;
+
+  background: #ffffff;
+}
+
+.progress-bar span {
+  display: block;
+
+  width: 42%;
+  height: 100%;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.22) 0,
+      rgba(255, 255, 255, 0.22) 6px,
+      transparent 6px,
+      transparent 12px
+    ),
+    linear-gradient(90deg, var(--color-pink), var(--color-yellow));
+}
+
+.progress-score {
+  min-height: 150px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px;
+  box-sizing: border-box;
+
+  border: 4px solid var(--color-shadow);
+  border-radius: 8px;
+
+  background: var(--color-yellow);
+  color: var(--color-shadow);
+
+  text-align: center;
+
+  box-shadow: 5px 5px 0 var(--color-shadow);
+}
+
+.progress-score strong {
+  font-family: "Press Start 2P", monospace;
+  font-size: 44px;
+  line-height: 1;
+}
+
+.progress-score span {
+  margin-top: 12px;
+
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   5. STATUS RÁPIDO
+   ========================================= */
+
+.dashboard-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+
+  margin-bottom: 22px;
+}
+
+.dashboard-stat-card {
+  min-height: 112px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 9px;
+
+  padding: 18px;
+  box-sizing: border-box;
+
+  border: 4px solid var(--color-shadow);
+  border-radius: 8px;
+
+  background: var(--color-paper);
+  color: var(--color-brown);
+
+  box-shadow: 6px 6px 0 var(--color-shadow);
+}
+
+.dashboard-stat-card svg {
+  color: var(--color-pink);
+  font-size: 23px;
+}
+
+.dashboard-stat-card span {
+  color: rgba(55, 53, 37, 0.62);
+
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.dashboard-stat-card strong {
+  color: var(--color-brown);
+
+  font-family: "Press Start 2P", monospace;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+/* =========================================
+   6. GRID PRINCIPAL
+   ========================================= */
+
+.dashboard-sections-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.dashboard-card {
+  padding: 24px;
+
+  border: 4px solid var(--color-shadow);
+  border-radius: 8px;
+
+  background: var(--color-paper);
+  color: var(--color-brown);
+
+  box-shadow: 6px 6px 0 var(--color-shadow);
+}
+
+.dashboard-card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+
+  margin-bottom: 20px;
+}
+
+.dashboard-card-heading h2 {
+  margin: 8px 0 0;
+
+  color: var(--color-brown);
+
+  font-family: "Press Start 2P", monospace;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.dashboard-card-count {
+  min-width: 62px;
+  height: 34px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 3px solid var(--color-shadow);
+  border-radius: 4px;
+
+  background: var(--color-yellow);
+  color: var(--color-shadow);
+
+  font-size: 12px;
+  font-weight: 900;
+
+  box-shadow: 3px 3px 0 var(--color-shadow);
+}
+
+.activity-heading-icon {
+  color: var(--color-pink);
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+/* =========================================
+   7. CONQUISTAS
+   ========================================= */
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.achievement-item {
+  min-height: 98px;
+
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  align-items: center;
+  gap: 14px;
+
+  padding: 14px;
+  box-sizing: border-box;
+
+  border: 3px solid var(--color-shadow);
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  box-shadow: 4px 4px 0 rgba(3, 4, 3, 0.34);
+}
+
+.achievement-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 3px solid var(--color-shadow);
+  border-radius: 6px;
+
+  background: var(--color-yellow);
+  color: var(--color-shadow);
+
+  box-shadow: 3px 3px 0 rgba(3, 4, 3, 0.32);
+}
+
+.achievement-icon svg {
+  font-size: 20px;
+}
+
+.achievement-item strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--color-brown);
+
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.achievement-item span {
+  color: rgba(55, 53, 37, 0.62);
+
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.achievement-item.locked {
+  background: rgba(55, 53, 37, 0.08);
+  opacity: 0.62;
+  filter: grayscale(0.75);
+}
+
+.achievement-item.locked .achievement-icon {
+  background: rgba(55, 53, 37, 0.14);
+  color: rgba(55, 53, 37, 0.55);
+}
+
+/* =========================================
+   8. ATIVIDADES
+   ========================================= */
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-item {
+  min-height: 66px;
+
+  display: grid;
+  grid-template-columns: 13px 1fr auto;
+  align-items: center;
+  gap: 14px;
+
+  border-bottom: 3px solid rgba(55, 53, 37, 0.12);
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-dot {
+  width: 11px;
+  height: 11px;
+
+  border: 2px solid var(--color-shadow);
+  border-radius: 3px;
+
+  box-shadow: 2px 2px 0 rgba(3, 4, 3, 0.32);
+}
+
+.activity-dot.green {
+  background: var(--color-green);
+}
+
+.activity-dot.yellow {
+  background: var(--color-yellow);
+}
+
+.activity-dot.pink {
+  background: var(--color-pink);
+}
+
+.activity-dot.brown {
+  background: var(--color-soft-brown);
+}
+
+.activity-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.activity-text strong {
+  color: var(--color-brown);
+
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.activity-text span {
+  color: rgba(55, 53, 37, 0.58);
+
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.activity-item time {
+  color: rgba(55, 53, 37, 0.54);
+
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+/* =========================================
+   9. RESPONSIVO
+   ========================================= */
+
+@media (max-width: 1300px) {
+  .dashboard-content {
+    width: calc(100% - 40px);
+    margin-left: calc(var(--dashboard-sidebar-width) + 70px);
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .dashboard-top-row {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-profile-chip {
+    width: fit-content;
+  }
+
+  .dashboard-progress-card {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-score {
+    align-items: flex-start;
+    min-height: auto;
+  }
+
+  .dashboard-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-sections-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboard-content {
+    width: calc(100% - 24px);
+
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 22px 0 calc(104px + env(safe-area-inset-bottom));
+  }
+
+  .dashboard-profile-chip {
+    width: fit-content;
+  }
+}
+
+@media (max-width: 720px) {
+  .dashboard-intro p {
+    font-size: 23px;
+  }
+
+  .dashboard-progress-card,
+  .dashboard-card,
+  .dashboard-stat-card,
+  .dashboard-profile-chip {
+    border-width: 3px;
+    box-shadow: 5px 5px 0 var(--color-shadow);
+  }
+
+  .dashboard-progress-card,
+  .dashboard-card {
+    padding: 20px;
+  }
+
+  .progress-main p {
+    font-size: 22px;
+  }
+
+  .dashboard-stats-grid {
+    gap: 14px;
+  }
+
+  .activity-item {
+    grid-template-columns: 13px 1fr;
+    padding: 11px 0;
+  }
+
+  .activity-item time {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-intro h1 {
+    font-size: 25px;
+  }
+
+  .dashboard-kicker,
+  .dashboard-section-label {
+    font-size: 8px;
+  }
+
+  .dashboard-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-score strong {
+    font-size: 36px;
+  }
+
+  .dashboard-card-heading {
+    flex-direction: column;
+  }
+
+  .dashboard-card-count {
+    width: fit-content;
+  }
+
+  .achievement-item {
+    grid-template-columns: 1fr;
+  }
+
+  .achievement-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .dashboard-profile-chip {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+

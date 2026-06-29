@@ -1,0 +1,630 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap");
+
+:root {
+  --color-pink: #9c2743;
+  --color-green: #1c611c;
+  --color-dark-green: #004d4a;
+  --color-game-blue: #1e2c86;
+  --color-cream: #f7f4d5;
+  --color-paper: #fffdf0;
+  --color-shadow: #030403;
+  --color-yellow: #ffca2c;
+}
+
+.contato-section {
+  position: relative;
+
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 110px 32px;
+  box-sizing: border-box;
+
+  background: var(--color-cream);
+  color: var(--color-dark-green);
+
+  overflow: hidden;
+  scroll-margin-top: 68px;
+}
+
+.contato-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background-image:
+    linear-gradient(rgba(0, 77, 74, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 77, 74, 0.055) 1px, transparent 1px);
+  background-size: 26px 26px;
+
+  pointer-events: none;
+}
+
+.contato-section::after {
+  content: "";
+  position: absolute;
+  right: -120px;
+  bottom: -120px;
+  z-index: 1;
+
+  width: 360px;
+  height: 360px;
+
+  border: 5px solid rgba(156, 39, 67, 0.16);
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle, rgba(255, 202, 44, 0.18), transparent 62%);
+
+  pointer-events: none;
+}
+
+.contato-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(1120px, 100%);
+
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  align-items: center;
+  gap: 54px;
+}
+
+.contato-text {
+  max-width: 720px;
+}
+
+.contato-kicker {
+  display: inline-block;
+
+  margin-bottom: 18px;
+  padding: 11px 13px;
+
+  border: 3px solid var(--color-dark-green);
+  border-radius: 5px;
+
+  background: var(--color-yellow);
+  color: var(--color-dark-green);
+
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: 8px;
+  line-height: 1.5;
+  text-transform: uppercase;
+
+  box-shadow: 4px 4px 0 var(--color-shadow);
+}
+
+.contato-text h2 {
+  margin: 0 0 24px;
+
+  color: var(--color-dark-green);
+
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: clamp(22px, 3.6vw, 44px);
+  line-height: 1.45;
+
+  text-shadow:
+    3px 3px 0 var(--color-yellow),
+    6px 6px 0 rgba(0, 77, 74, 0.16);
+}
+
+.contato-text p {
+  margin: 0 0 18px;
+
+  color: rgba(0, 77, 74, 0.86);
+
+  font-size: 18px;
+  line-height: 1.8;
+  font-weight: 700;
+}
+
+.contato-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+
+  margin-top: 26px;
+}
+
+.contato-button {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 54px;
+  padding: 0 22px;
+  box-sizing: border-box;
+
+  border: 4px solid var(--color-shadow);
+  border-radius: 7px;
+
+  background: var(--color-green);
+  color: var(--color-paper);
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: 9px;
+  line-height: 1.5;
+
+  box-shadow:
+    5px 5px 0 var(--color-shadow),
+    0 14px 24px rgba(3, 4, 3, 0.18);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.contato-button::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -40%;
+
+  width: 40%;
+  height: 220%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(247, 244, 213, 0.22),
+    transparent
+  );
+
+  transform: rotate(18deg);
+  animation: contato-button-shine 4.8s ease-in-out infinite;
+
+  pointer-events: none;
+}
+
+.contato-button:hover {
+  background: #257d25;
+  transform: translate(2px, 2px);
+  filter: brightness(1.05);
+
+  box-shadow:
+    3px 3px 0 var(--color-shadow),
+    0 10px 18px rgba(3, 4, 3, 0.16);
+}
+
+.contato-button:active {
+  transform: translate(5px, 5px);
+
+  box-shadow:
+    0 0 0 var(--color-shadow),
+    0 6px 12px rgba(3, 4, 3, 0.14);
+}
+
+.contato-mini-info {
+  max-width: 260px;
+
+  color: rgba(0, 77, 74, 0.72);
+
+  font-family: "VT323", monospace;
+  font-size: 22px;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+/* PAINEL */
+
+.contato-panel {
+  position: relative;
+
+  padding: 24px;
+  box-sizing: border-box;
+
+  border: 5px solid var(--color-shadow);
+  border-radius: 10px;
+
+  background:
+    linear-gradient(rgba(255, 253, 240, 0.92), rgba(255, 253, 240, 0.92)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(55, 53, 37, 0.06) 0,
+      rgba(55, 53, 37, 0.06) 1px,
+      transparent 1px,
+      transparent 16px
+    );
+
+  box-shadow:
+    9px 9px 0 var(--color-shadow),
+    0 26px 42px rgba(3, 4, 3, 0.18);
+
+  overflow: hidden;
+
+  animation: contato-panel-float 5.4s ease-in-out infinite;
+}
+
+.contato-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(circle at top right, rgba(255, 202, 44, 0.18), transparent 38%),
+    radial-gradient(circle at bottom left, rgba(156, 39, 67, 0.12), transparent 42%);
+
+  pointer-events: none;
+}
+
+.contato-panel > * {
+  position: relative;
+  z-index: 2;
+}
+
+.contato-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 22px;
+}
+
+.contato-panel-header span {
+  width: 14px;
+  height: 14px;
+
+  border: 3px solid var(--color-shadow);
+  border-radius: 3px;
+
+  background: var(--color-yellow);
+
+  box-shadow: 2px 2px 0 rgba(3, 4, 3, 0.5);
+}
+
+.contato-panel-header span:nth-child(2) {
+  background: var(--color-pink);
+}
+
+.contato-panel-header span:nth-child(3) {
+  background: var(--color-green);
+}
+
+.contato-panel-title {
+  margin-bottom: 22px;
+}
+
+.contato-panel-title span {
+  display: inline-block;
+
+  margin-bottom: 12px;
+
+  color: var(--color-pink);
+
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: 7px;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.contato-panel-title h3 {
+  margin: 0;
+
+  color: var(--color-dark-green);
+
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.contato-options {
+  display: grid;
+  gap: 14px;
+}
+
+.contato-option-card {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  align-items: center;
+  gap: 14px;
+
+  padding: 16px;
+  box-sizing: border-box;
+
+  border: 4px solid var(--color-shadow);
+  border-radius: 8px;
+
+  background: var(--color-game-blue);
+  color: var(--color-paper);
+
+  box-shadow: 5px 5px 0 var(--color-shadow);
+
+  overflow: hidden;
+
+  animation: contato-card-idle 4.6s ease-in-out infinite;
+}
+
+.contato-option-card:nth-child(2) {
+  background: var(--color-green);
+  animation-delay: 0.45s;
+}
+
+.contato-option-card:nth-child(3) {
+  background: var(--color-pink);
+  animation-delay: 0.9s;
+}
+
+.contato-option-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+
+  background-size: 14px 14px;
+  opacity: 0.24;
+
+  pointer-events: none;
+}
+
+.contato-option-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.contato-option-number {
+  width: 46px;
+  height: 46px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 3px solid currentColor;
+  border-radius: 7px;
+
+  color: var(--color-paper);
+
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: 10px;
+
+  box-shadow: 3px 3px 0 rgba(3, 4, 3, 0.36);
+}
+
+.contato-option-card h4 {
+  margin: 0 0 7px;
+
+  color: var(--color-paper);
+
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.contato-option-card p {
+  margin: 0;
+
+  color: rgba(255, 253, 240, 0.9);
+
+  font-size: 14px;
+  line-height: 1.55;
+  font-weight: 800;
+}
+
+/* ANIMAÇÕES */
+
+@keyframes contato-panel-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes contato-card-idle {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-4px) rotate(-0.4deg);
+  }
+}
+
+@keyframes contato-button-shine {
+  0%,
+  35% {
+    transform: translateX(-120%) rotate(18deg);
+    opacity: 0;
+  }
+
+  48% {
+    opacity: 1;
+  }
+
+  68% {
+    transform: translateX(420%) rotate(18deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(420%) rotate(18deg);
+    opacity: 0;
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+  .contato-section {
+    min-height: auto;
+    padding: 90px 24px;
+  }
+
+  .contato-content {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .contato-text {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .contato-actions {
+    justify-content: center;
+  }
+}
+
+/* CELULAR */
+
+@media (max-width: 560px) {
+  .contato-section {
+    padding: 76px 16px;
+    scroll-margin-top: 64px;
+  }
+
+  .contato-section::before {
+    background-size: 20px 20px;
+  }
+
+  .contato-text {
+    text-align: left;
+  }
+
+  .contato-kicker {
+    font-size: 8px;
+  }
+
+  .contato-text h2 {
+    font-size: 21px;
+    line-height: 1.65;
+  }
+
+  .contato-text p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .contato-actions {
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .contato-button {
+    width: 100%;
+    min-height: 54px;
+    padding: 0 12px;
+    font-size: 8px;
+  }
+
+  .contato-mini-info {
+    max-width: 100%;
+    font-size: 21px;
+  }
+
+  .contato-panel {
+    padding: 20px;
+    border-width: 4px;
+
+    box-shadow:
+      6px 6px 0 var(--color-shadow),
+      0 18px 30px rgba(3, 4, 3, 0.16);
+  }
+
+  .contato-panel-title h3 {
+    font-size: 15px;
+  }
+
+  .contato-option-card {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 16px;
+    border-width: 4px;
+
+    box-shadow: 4px 4px 0 var(--color-shadow);
+  }
+
+  .contato-option-number {
+    width: 44px;
+    height: 44px;
+  }
+
+  .contato-option-card h4 {
+    font-size: 10px;
+  }
+
+  .contato-option-card p {
+    font-size: 13px;
+  }
+}
+
+/* ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+  .contato-panel,
+  .contato-option-card,
+  .contato-button::before {
+    animation: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .contato-text h2 {
+    font-size: 21px;
+    line-height: 1.65;
+
+    text-shadow:
+      2px 2px 0 var(--color-yellow),
+      4px 4px 0 rgba(0, 77, 74, 0.14);
+  }
+}
+
+/* BOTÃO NO FINAL DA SEÇÃO */
+
+.contato-actions {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+
+  margin-top: 6px;
+  text-align: center;
+}
+
+.contato-mini-info {
+  max-width: 320px;
+}
+
+@media (max-width: 560px) {
+  .contato-actions {
+    align-items: stretch;
+    justify-content: flex-start;
+    margin-top: 0;
+    text-align: left;
+  }
+
+  .contato-mini-info {
+    max-width: 100%;
+  }
+
+  .contato-button {
+    order: 2;
+  }
+}

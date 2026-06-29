@@ -1,0 +1,700 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+:root {
+  --color-cream: #f7f4d5;
+  --color-paper: #fffdf0;
+  --color-dark-green: #004d4a;
+  --color-green: #34b134;
+  --color-yellow: #ffca2c;
+  --color-shadow: #030403;
+  --color-rose: #d2968c;
+  --color-red-rose: #cc385b;
+}
+
+/* NAVBAR */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  width: 100%;
+  min-height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 72px 0 38px;
+  box-sizing: border-box;
+
+  background: transparent;
+
+  transition:
+    background-color 0.25s ease,
+    box-shadow 0.25s ease,
+    min-height 0.25s ease,
+    padding 0.25s ease;
+}
+
+.navbar-scrolled,
+.navbar.menu-open {
+  min-height: 60px;
+
+  padding: 0 64px 0 34px;
+
+  background: rgba(255, 253, 240, 0.96);
+
+  box-shadow: 0 12px 28px rgba(0, 86, 83, 0.12);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* LOGO */
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  text-decoration: none;
+}
+
+.logo {
+  display: block;
+
+  width: 105px;
+  max-width: 100%;
+  height: auto;
+
+  object-fit: contain;
+  image-rendering: pixelated;
+
+  transition: width 0.25s ease;
+}
+
+.navbar-scrolled .logo,
+.navbar.menu-open .logo {
+  width: 88px;
+}
+
+/* LADO DIREITO */
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* MENU DESKTOP */
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-link {
+  padding: 10px 16px;
+
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  color: var(--color-cream);
+  text-decoration: none;
+
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+
+  text-shadow: 2px 2px 0 rgba(3, 4, 3, 0.32);
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    text-shadow 0.2s ease;
+}
+
+.menu-link,
+.menu-link:visited,
+.menu-link:hover,
+.menu-link:active,
+.menu-link:focus,
+.menu-link:focus-visible {
+  text-decoration: none;
+  outline: none;
+}
+
+.menu-link:hover {
+  color: var(--color-cream);
+  background: rgba(247, 244, 213, 0.12);
+  border-color: rgba(247, 244, 213, 0.2);
+
+  transform: translateY(-1px);
+}
+
+.navbar-scrolled .menu-link,
+.navbar.menu-open .menu-link {
+  color: var(--color-dark-green);
+  text-shadow: none;
+}
+
+.navbar-scrolled .menu-link:visited,
+.navbar-scrolled .menu-link:hover,
+.navbar-scrolled .menu-link:active,
+.navbar-scrolled .menu-link:focus,
+.navbar-scrolled .menu-link:focus-visible,
+.navbar.menu-open .menu-link:visited,
+.navbar.menu-open .menu-link:hover,
+.navbar.menu-open .menu-link:active,
+.navbar.menu-open .menu-link:focus,
+.navbar.menu-open .menu-link:focus-visible {
+  color: var(--color-dark-green);
+  text-decoration: none;
+  outline: none;
+}
+
+.navbar-scrolled .menu-link:hover,
+.navbar.menu-open .menu-link:hover {
+  background: rgba(0, 77, 74, 0.08);
+  border-color: rgba(0, 77, 74, 0.14);
+}
+
+/* BOTÃO ENTRAR */
+
+.login-button-navbar {
+  min-height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 18px;
+  box-sizing: border-box;
+
+  border: 3px solid var(--color-dark-green);
+  border-radius: 6px;
+
+  background: #116418;
+  color: var(--color-cream);
+
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: 8px;
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+
+  box-shadow: 4px 4px 0 var(--color-dark-green);
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.login-button-navbar,
+.login-button-navbar:visited,
+.login-button-navbar:hover,
+.login-button-navbar:active,
+.login-button-navbar:focus,
+.login-button-navbar:focus-visible {
+  color: var(--color-cream);
+  text-decoration: none;
+  outline: none;
+}
+
+.login-button-navbar:hover {
+  background: #13751b;
+  border-color: var(--color-dark-green);
+  color: var(--color-cream);
+
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--color-dark-green);
+
+  filter: brightness(1.04);
+}
+
+.login-button-navbar:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--color-dark-green);
+}
+
+/* BOTÃO HAMBÚRGUER PIXEL */
+
+.menu-toggle {
+  display: none;
+
+  position: relative;
+
+  width: 44px;
+  height: 44px;
+
+  padding: 0;
+
+  border: 3px solid var(--color-shadow);
+  border-radius: 6px;
+
+  background:
+    linear-gradient(rgba(0, 77, 74, 0.98), rgba(0, 77, 74, 0.98)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 253, 240, 0.08) 0,
+      rgba(255, 253, 240, 0.08) 1px,
+      transparent 1px,
+      transparent 7px
+    );
+
+  box-shadow: 4px 4px 0 var(--color-shadow);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.menu-toggle,
+.menu-toggle:focus,
+.menu-toggle:focus-visible,
+.menu-toggle:active {
+  outline: none;
+}
+
+.menu-toggle:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--color-shadow);
+  filter: brightness(1.06);
+}
+
+.menu-toggle:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--color-shadow);
+}
+
+.menu-toggle span {
+  position: absolute;
+  left: 50%;
+
+  display: block;
+
+  width: 22px;
+  height: 3px;
+
+  border-radius: 0;
+  background: var(--color-cream);
+
+  transform: translateX(-50%);
+
+  box-shadow: none;
+
+  transition:
+    transform 0.22s ease,
+    opacity 0.22s ease,
+    top 0.22s ease,
+    background-color 0.22s ease,
+    height 0.22s ease;
+}
+
+.menu-toggle span:nth-child(1) {
+  top: 13px;
+}
+
+.menu-toggle span:nth-child(2) {
+  top: 20px;
+}
+
+.menu-toggle span:nth-child(3) {
+  top: 27px;
+}
+
+.menu-toggle.active {
+  background:
+    linear-gradient(rgba(255, 253, 240, 0.98), rgba(255, 253, 240, 0.98)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 77, 74, 0.07) 0,
+      rgba(0, 77, 74, 0.07) 1px,
+      transparent 1px,
+      transparent 7px
+    );
+
+  border-color: var(--color-shadow);
+}
+
+.menu-toggle.active span {
+  height: 4px;
+  background: var(--color-dark-green);
+}
+
+.menu-toggle.active span:nth-child(1) {
+  top: 20px;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  top: 20px;
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+/* REMOVE REALCE FEIO DE CLIQUE */
+
+.navbar a,
+.navbar button,
+.menu-link,
+.login-button-navbar,
+.menu-toggle {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.navbar a:focus,
+.navbar a:focus-visible,
+.navbar button:focus,
+.navbar button:focus-visible {
+  outline: none;
+}
+
+/* TABLETS */
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 30px;
+  }
+
+  .navbar-scrolled,
+  .navbar.menu-open {
+    padding: 0 26px;
+  }
+
+  .navbar-right {
+    gap: 12px;
+  }
+
+  .menu {
+    gap: 4px;
+  }
+
+  .menu-link {
+    padding: 9px 10px;
+    font-size: 8px;
+  }
+
+  .login-button-navbar {
+    min-height: 36px;
+    padding: 0 14px;
+    font-size: 8px;
+  }
+
+  .logo {
+    width: 95px;
+  }
+
+  .navbar-scrolled .logo,
+  .navbar.menu-open .logo {
+    width: 82px;
+  }
+}
+
+/* CELULARES */
+
+@media (max-width: 720px) {
+  .navbar {
+    min-height: 66px;
+    padding: 0 16px;
+
+    background: transparent;
+  }
+
+  .navbar-scrolled,
+  .navbar.menu-open {
+    min-height: 66px;
+    padding: 0 16px;
+
+    background: rgba(255, 253, 240, 0.96);
+    border-bottom: 3px solid rgba(0, 77, 74, 0.18);
+  }
+
+  .logo,
+  .navbar-scrolled .logo,
+  .navbar.menu-open .logo {
+    width: 92px;
+  }
+
+  .menu-toggle {
+    z-index: 1002;
+
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .navbar-right {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 12px;
+    right: 12px;
+
+    width: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+
+    padding: 16px;
+    box-sizing: border-box;
+
+    border: 3px solid var(--color-shadow);
+    border-radius: 8px;
+
+    background:
+      linear-gradient(rgba(255, 253, 240, 0.98), rgba(247, 244, 213, 0.98)),
+      repeating-linear-gradient(
+        0deg,
+        rgba(0, 77, 74, 0.06) 0,
+        rgba(0, 77, 74, 0.06) 1px,
+        transparent 1px,
+        transparent 9px
+      );
+
+    box-shadow: 6px 6px 0 var(--color-shadow);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(-8px);
+
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease,
+      transform 0.2s ease;
+  }
+
+ .navbar-right::before {
+  content: "MENU";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+  min-height: 26px;
+
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  border: 2px solid var(--color-shadow);
+  border-radius: 4px;
+
+  background: var(--color-dark-green);
+  color: var(--color-cream);
+
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: 7px;
+  line-height: 1;
+
+  box-shadow: 3px 3px 0 var(--color-shadow);
+}
+
+  .navbar-right.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: translateY(0);
+  }
+
+  .menu {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .menu-link {
+    width: 100%;
+
+    padding: 15px 13px;
+    box-sizing: border-box;
+
+    border: 3px solid transparent;
+    border-radius: 6px;
+
+    background: rgba(255, 253, 240, 0.55);
+    color: var(--color-dark-green);
+    text-shadow: none;
+
+    text-align: left;
+    font-size: 10px;
+    line-height: 1.35;
+
+    transition:
+      background-color 0.18s ease,
+      border-color 0.18s ease,
+      transform 0.18s ease;
+  }
+
+  .menu-link,
+  .menu-link:visited,
+  .menu-link:hover,
+  .menu-link:active,
+  .menu-link:focus,
+  .menu-link:focus-visible {
+    color: var(--color-dark-green);
+    text-decoration: none;
+    outline: none;
+  }
+
+  .menu-link:hover,
+  .menu-link:active {
+    background: rgba(255, 202, 44, 0.2);
+    border-color: rgba(0, 77, 74, 0.18);
+
+    transform: none;
+  }
+
+  .login-button-navbar {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+
+    padding: 0 12px;
+    box-sizing: border-box;
+
+    border: 3px solid var(--color-shadow);
+    border-radius: 6px;
+
+    background: #116418;
+    color: var(--color-cream);
+
+    text-align: center;
+    font-size: 10px;
+
+    box-shadow: 4px 4px 0 var(--color-shadow);
+  }
+
+  .login-button-navbar:hover {
+    background: #13751b;
+    color: var(--color-cream);
+
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--color-shadow);
+  }
+}
+
+/* CELULARES PEQUENOS */
+
+@media (max-width: 360px) {
+  .navbar {
+    padding: 0 12px;
+  }
+
+  .logo,
+  .navbar-scrolled .logo,
+  .navbar.menu-open .logo {
+    width: 82px;
+  }
+
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .menu-toggle span {
+    width: 20px;
+  }
+
+  .navbar-right {
+    left: 10px;
+    right: 10px;
+    padding: 13px;
+  }
+
+  .menu-link,
+  .login-button-navbar {
+    font-size: 8px;
+  }
+}
+
+/* AJUSTE VISUAL DO HAMBÚRGUER - MAIS LIMPO */
+
+.menu-toggle {
+  border: 3px solid var(--color-cream);
+  background: transparent;
+  box-shadow: none;
+}
+
+.menu-toggle span {
+  height: 3px;
+  background: var(--color-cream);
+  box-shadow: 2px 2px 0 rgba(3, 4, 3, 0.35);
+}
+
+.menu-toggle:hover {
+  transform: none;
+  box-shadow: none;
+  filter: none;
+}
+
+.navbar-scrolled .menu-toggle,
+.navbar.menu-open .menu-toggle {
+  border-color: var(--color-dark-green);
+  background: rgba(255, 253, 240, 0.72);
+  box-shadow: 3px 3px 0 var(--color-shadow);
+}
+
+.navbar-scrolled .menu-toggle span,
+.navbar.menu-open .menu-toggle span {
+  background: var(--color-dark-green);
+  box-shadow: none;
+}
+
+.menu-toggle.active {
+  border-color: var(--color-dark-green);
+  background: var(--color-paper);
+  box-shadow: 3px 3px 0 var(--color-shadow);
+}
+
+.menu-toggle.active span {
+  height: 4px;
+  background: var(--color-dark-green);
+  box-shadow: none;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  top: 20px;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  top: 20px;
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+.navbar-right::before {
+  content: none;
+  display: none;
+}

@@ -1,0 +1,1495 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap");
+
+:root {
+  --card-cream: #f7f4d5;
+  --card-paper: #fffdf0;
+  --card-dark: #030403;
+  --card-green: #004d4a;
+  --card-light-green: #34b134;
+  --card-pink: #cc385b;
+  --card-yellow: #ffca2c;
+  --card-blue: #1e2c86;
+  --card-purple: #7b3fc7;
+}
+
+.dog-card-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 22px;
+  box-sizing: border-box;
+
+  background:
+    radial-gradient(circle at center, rgba(247, 244, 213, 0.1), transparent 34%),
+    rgba(3, 4, 3, 0.72);
+
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+
+  perspective: 1200px;
+}
+
+/* BASE DA CARTA */
+
+.dog-card-modal {
+  --rx: 0deg;
+  --ry: 0deg;
+  --mx: 50%;
+  --my: 24%;
+  --shine-opacity: 0.55;
+
+  --card-main: #fffdf0;
+  --card-second: #f7f4d5;
+  --card-accent: #ffca2c;
+  --card-accent-dark: #004d4a;
+  --card-title-bg: #ffca2c;
+  --card-title-text: #030403;
+  --card-text: #004d4a;
+  --card-muted: rgba(0, 77, 74, 0.65);
+  --card-chip-bg: rgba(255, 253, 240, 0.78);
+  --card-chip-text: #004d4a;
+  --card-holo-opacity: 0.38;
+  --card-line-opacity: 0.22;
+
+  position: relative;
+
+  width: min(92vw, 410px);
+  max-height: min(92vh, 850px);
+
+  border: 5px solid var(--card-dark);
+  border-radius: 26px;
+
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 34%),
+    linear-gradient(145deg, var(--card-main), var(--card-second));
+
+  color: var(--card-text);
+
+  box-shadow:
+    10px 10px 0 var(--card-dark),
+    0 26px 48px rgba(3, 4, 3, 0.42);
+
+  overflow: auto;
+
+  transform:
+    perspective(1000px)
+    rotateX(var(--rx))
+    rotateY(var(--ry));
+
+  transform-style: preserve-3d;
+  will-change: transform;
+
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.2s ease;
+
+  animation: cardEnter 0.42s ease-out;
+}
+
+/* tira a scrollbar feia */
+.dog-card-modal::-webkit-scrollbar {
+  width: 0;
+}
+
+.dog-card-modal::before,
+.dog-card-modal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* camada holográfica geral */
+.dog-card-modal::before {
+  z-index: 1;
+
+  background:
+    radial-gradient(
+      circle at var(--mx) var(--my),
+      rgba(255, 255, 255, 0.72),
+      rgba(255, 255, 255, 0.18) 13%,
+      transparent 28%
+    ),
+    linear-gradient(
+      118deg,
+      rgba(255, 202, 44, 0.36) 0%,
+      rgba(52, 177, 52, 0.22) 24%,
+      rgba(107, 212, 255, 0.22) 45%,
+      rgba(204, 56, 91, 0.22) 68%,
+      rgba(255, 202, 44, 0.32) 100%
+    );
+
+  mix-blend-mode: screen;
+  opacity: var(--card-holo-opacity);
+}
+
+/* linhas foil mais leves */
+.dog-card-modal::after {
+  z-index: 2;
+
+  background:
+    repeating-linear-gradient(
+      115deg,
+      rgba(255, 255, 255, var(--card-line-opacity)) 0 2px,
+      transparent 2px 7px
+    ),
+    radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.7) 0 1px, transparent 2px),
+    radial-gradient(circle at 80% 22%, rgba(255, 255, 255, 0.55) 0 1px, transparent 2px),
+    radial-gradient(circle at 68% 78%, rgba(255, 255, 255, 0.5) 0 1px, transparent 2px);
+
+  mix-blend-mode: overlay;
+  opacity: var(--shine-opacity);
+}
+
+.dog-card-modal-inner {
+  position: relative;
+  z-index: 4;
+
+  padding: 17px;
+  box-sizing: border-box;
+}
+
+/* NORMAL — agora tem identidade, não é apagada */
+
+.dog-card-modal-normal {
+  --card-main: #fffdf0;
+  --card-second: #eaf7df;
+  --card-accent: #34b134;
+  --card-accent-dark: #004d4a;
+  --card-title-bg: #ffca2c;
+  --card-title-text: #004d4a;
+  --card-text: #004d4a;
+  --card-muted: rgba(0, 77, 74, 0.68);
+  --card-chip-bg: rgba(255, 253, 240, 0.82);
+  --card-chip-text: #004d4a;
+  --card-holo-opacity: 0.42;
+  --card-line-opacity: 0.18;
+
+  background:
+    radial-gradient(circle at top left, rgba(255, 202, 44, 0.38), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(52, 177, 52, 0.2), transparent 34%),
+    linear-gradient(145deg, #fffdf0 0%, #f7f4d5 48%, #e5f6d8 100%);
+}
+
+.dog-card-modal-normal .dog-card-modal-image-area {
+  background:
+    radial-gradient(circle at center, rgba(255, 202, 44, 0.34), transparent 55%),
+    linear-gradient(135deg, rgba(255, 253, 240, 0.86), rgba(235, 250, 220, 0.72));
+}
+
+.dog-card-modal-normal .dog-card-modal-image-area::after {
+  opacity: 0.35;
+}
+
+/* SHINY — mais forte, mas sem pesar no mobile */
+
+.dog-card-modal-shiny {
+  --card-main: #fff7b7;
+  --card-second: #f7f4d5;
+  --card-accent: #ffca2c;
+  --card-accent-dark: #8b5f00;
+  --card-title-bg: #ffca2c;
+  --card-title-text: #004d4a;
+  --card-text: #004d4a;
+  --card-muted: rgba(0, 77, 74, 0.66);
+  --card-chip-bg: rgba(255, 255, 255, 0.58);
+  --card-chip-text: #004d4a;
+  --card-holo-opacity: 0.78;
+  --card-line-opacity: 0.28;
+
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.8), transparent 24%),
+    radial-gradient(circle at 90% 18%, rgba(255, 202, 44, 0.52), transparent 24%),
+    linear-gradient(
+      135deg,
+      #fff0a3 0%,
+      #e9fff6 24%,
+      #edf4ff 45%,
+      #fff0fb 68%,
+      #fff7bd 100%
+    );
+
+  box-shadow:
+    10px 10px 0 var(--card-dark),
+    0 0 0 2px rgba(255, 202, 44, 0.8),
+    0 0 32px rgba(255, 202, 44, 0.45),
+    0 26px 48px rgba(3, 4, 3, 0.38);
+}
+
+.dog-card-modal-shiny::before {
+  background:
+    radial-gradient(
+      circle at var(--mx) var(--my),
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 202, 44, 0.46) 12%,
+      transparent 30%
+    ),
+    linear-gradient(
+      118deg,
+      rgba(255, 77, 136, 0.34) 0%,
+      rgba(255, 202, 44, 0.46) 20%,
+      rgba(77, 255, 207, 0.32) 42%,
+      rgba(80, 180, 255, 0.32) 62%,
+      rgba(204, 108, 255, 0.3) 82%,
+      rgba(255, 202, 44, 0.4) 100%
+    );
+
+  animation: shinyHoloMove 5.2s ease-in-out infinite;
+}
+
+.dog-card-modal-shiny .dog-card-modal-image-area {
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.62), transparent 42%),
+    linear-gradient(
+      135deg,
+      rgba(255, 239, 124, 0.58),
+      rgba(230, 255, 247, 0.52),
+      rgba(255, 229, 250, 0.5)
+    );
+}
+
+/* raridades também alteram o brilho da normal */
+
+.dog-card-rarity-common {
+  --card-accent: #34b134;
+}
+
+.dog-card-rarity-rare {
+  --card-accent: #4ab8ff;
+}
+
+.dog-card-rarity-epic {
+  --card-accent: #b46dff;
+}
+
+.dog-card-rarity-legendary {
+  --card-accent: #ff8b3d;
+}
+
+/* BOTÃO FECHAR */
+
+.dog-card-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 8;
+
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 3px solid var(--card-dark);
+  border-radius: 10px;
+
+  background: var(--card-paper);
+  color: var(--card-dark);
+
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: 12px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  box-shadow: 3px 3px 0 var(--card-dark);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.dog-card-modal-close:hover {
+  background: var(--card-pink);
+  color: var(--card-cream);
+
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--card-dark);
+}
+
+/* TOPO */
+
+.dog-card-modal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding-right: 46px;
+  margin-bottom: 15px;
+}
+
+.dog-card-number {
+  padding: 8px 10px;
+
+  border: 2px solid rgba(0, 77, 74, 0.18);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--card-green);
+
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.dog-card-modal-rarity-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dog-card-modal-rarity-group em,
+.dog-card-modal-rarity-group strong {
+  padding: 8px 10px;
+
+  border-radius: 999px;
+
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 1000;
+  text-transform: uppercase;
+}
+
+.dog-card-modal-rarity-group em {
+  background: var(--card-yellow);
+  color: var(--card-green);
+}
+
+.dog-card-modal-rarity-group strong {
+  background: rgba(0, 77, 74, 0.12);
+  color: var(--card-green);
+}
+
+/* IMAGEM */
+
+.dog-card-modal-image-area {
+  position: relative;
+
+  min-height: 205px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 18px;
+
+  border: 4px solid var(--card-dark);
+  border-radius: 20px;
+
+  box-shadow:
+    inset 0 0 0 3px rgba(255, 255, 255, 0.24),
+    5px 5px 0 rgba(3, 4, 3, 0.42);
+
+  overflow: hidden;
+}
+
+.dog-card-modal-image-area::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+
+  background-size: 20px 20px;
+  opacity: 0.32;
+  pointer-events: none;
+}
+
+.dog-card-modal-image-area::after {
+  content: "";
+  position: absolute;
+  inset: -60%;
+
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0%,
+      transparent 34%,
+      rgba(255, 255, 255, 0.42) 45%,
+      rgba(255, 202, 44, 0.22) 50%,
+      rgba(255, 255, 255, 0.22) 58%,
+      transparent 68%
+    );
+
+  transform: translateX(-58%) rotate(8deg);
+  animation: imageLightSweep 3.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.dog-card-modal-image {
+  position: relative;
+  z-index: 2;
+
+  width: 240px;
+  height: 178px;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 10px 12px rgba(3, 4, 3, 0.28))
+    drop-shadow(2px 2px 0 rgba(3, 4, 3, 0.25));
+}
+
+.dog-card-modal-emoji {
+  position: relative;
+  z-index: 2;
+
+  font-size: 86px;
+  line-height: 1;
+}
+
+/* NOME */
+
+.dog-card-modal-name-area {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 12px;
+}
+
+.dog-card-modal h2 {
+  width: fit-content;
+  max-width: 100%;
+
+  margin: 0;
+  padding: 10px 16px;
+
+  border: 4px solid var(--card-dark);
+  border-radius: 14px;
+
+  background: var(--card-title-bg);
+  color: var(--card-title-text);
+
+  text-align: center;
+
+  font-family: "Press Start 2P", system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.25;
+
+  box-shadow: 4px 4px 0 rgba(3, 4, 3, 0.42);
+}
+
+/* TAGS */
+
+.dog-card-modal-tags {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-bottom: 16px;
+}
+
+.dog-card-modal-tags span {
+  padding: 8px 10px;
+
+  border: 2px solid rgba(0, 77, 74, 0.14);
+  border-radius: 999px;
+
+  background: var(--card-chip-bg);
+  color: var(--card-chip-text);
+
+  font-size: 10px;
+  font-weight: 1000;
+  text-transform: uppercase;
+}
+
+.dog-card-modal-tags .dog-card-shiny-tag {
+  background: var(--card-yellow);
+  color: var(--card-green);
+}
+
+.dog-card-modal-tags .dog-card-normal-tag {
+  background: rgba(0, 77, 74, 0.12);
+  color: var(--card-green);
+}
+
+/* DESCRIÇÃO */
+
+.dog-card-modal-description {
+  margin: 0 0 18px;
+
+  padding: 0 8px;
+
+  color: var(--card-muted);
+
+  text-align: center;
+
+  font-size: 14px;
+  line-height: 1.7;
+  font-weight: 800;
+}
+
+/* INFOS */
+
+.dog-card-modal-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.dog-card-modal-info-grid div {
+  padding: 12px;
+  box-sizing: border-box;
+
+  border: 2px solid rgba(0, 77, 74, 0.14);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.48);
+
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+.dog-card-modal-info-grid span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: rgba(0, 77, 74, 0.56);
+
+  font-size: 10px;
+  font-weight: 1000;
+}
+
+.dog-card-modal-info-grid strong {
+  display: block;
+
+  color: var(--card-green);
+
+  font-size: 12px;
+  font-weight: 1000;
+}
+
+/* ANIMAÇÕES */
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(28deg) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      perspective(1000px)
+      rotateX(var(--rx))
+      rotateY(var(--ry))
+      scale(1);
+  }
+}
+
+@keyframes imageLightSweep {
+  0% {
+    transform: translateX(-58%) rotate(8deg);
+    opacity: 0;
+  }
+
+  32% {
+    opacity: 0.9;
+  }
+
+  58% {
+    transform: translateX(58%) rotate(8deg);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translateX(58%) rotate(8deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shinyHoloMove {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 0.92;
+  }
+}
+
+/* RESPONSIVO LEVE */
+
+@media (max-width: 560px) {
+  .dog-card-modal-overlay {
+    padding: 14px;
+  }
+
+  .dog-card-modal {
+    width: 100%;
+    max-height: calc(100vh - 28px);
+
+    border-radius: 22px;
+
+    transform: none;
+    will-change: auto;
+
+    box-shadow:
+      6px 6px 0 var(--card-dark),
+      0 20px 40px rgba(3, 4, 3, 0.34);
+  }
+
+  .dog-card-modal::before {
+    opacity: calc(var(--card-holo-opacity) * 0.72);
+  }
+
+  .dog-card-modal::after {
+    opacity: 0.38;
+  }
+
+  .dog-card-modal-shiny::before {
+    animation: shinyHoloMove 5.8s ease-in-out infinite;
+  }
+
+  .dog-card-modal-inner {
+    padding: 15px;
+  }
+
+  .dog-card-modal-top {
+    padding-right: 42px;
+  }
+
+  .dog-card-number {
+    font-size: 9px;
+  }
+
+  .dog-card-modal-rarity-group em,
+  .dog-card-modal-rarity-group strong {
+    font-size: 8px;
+    padding: 7px 8px;
+  }
+
+  .dog-card-modal-image-area {
+    min-height: 170px;
+  }
+
+  .dog-card-modal-image-area::after {
+    animation-duration: 5.2s;
+  }
+
+  .dog-card-modal-image {
+    width: 210px;
+    height: 150px;
+  }
+
+  .dog-card-modal h2 {
+    font-size: 15px;
+  }
+
+  .dog-card-modal-description {
+    font-size: 13px;
+  }
+
+  .dog-card-modal-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dog-card-modal,
+  .dog-card-modal::before,
+  .dog-card-modal::after,
+  .dog-card-modal-image-area::after,
+  .dog-card-modal-shiny::before {
+    animation: none;
+  }
+}
+
+/* SHINY PREMIUM - FRAME + HOLO EM TODA A CARTA */
+
+.dog-card-modal-shiny {
+  --card-main: #fff2a8;
+  --card-second: #f7f4d5;
+  --card-accent: #ffca2c;
+  --card-accent-dark: #8a5b00;
+  --card-title-bg: #ffca2c;
+  --card-title-text: #004d4a;
+  --card-text: #004d4a;
+  --card-muted: rgba(0, 77, 74, 0.68);
+  --card-chip-bg: rgba(255, 255, 255, 0.62);
+  --card-chip-text: #004d4a;
+  --card-holo-opacity: 0.92;
+  --card-line-opacity: 0.34;
+
+  border: 5px solid var(--card-dark);
+
+  background:
+    radial-gradient(circle at 18% 8%, rgba(255, 255, 255, 0.98), transparent 18%),
+    radial-gradient(circle at 88% 16%, rgba(255, 202, 44, 0.72), transparent 22%),
+    radial-gradient(circle at 70% 86%, rgba(255, 135, 219, 0.38), transparent 26%),
+    linear-gradient(
+      135deg,
+      #fff0a3 0%,
+      #e8fff7 22%,
+      #edf4ff 42%,
+      #fff0fb 64%,
+      #fff7bd 100%
+    );
+
+  box-shadow:
+    10px 10px 0 var(--card-dark),
+    0 0 0 3px rgba(255, 202, 44, 0.9),
+    0 0 18px rgba(255, 202, 44, 0.7),
+    0 0 44px rgba(255, 202, 44, 0.42),
+    0 26px 48px rgba(3, 4, 3, 0.42);
+
+  animation:
+    cardEnter 0.42s ease-out,
+    shinyCardAura 4.8s ease-in-out infinite;
+}
+
+/* FRAME INTERNO DOURADO */
+
+.dog-card-modal-shiny .dog-card-modal-inner {
+  position: relative;
+
+  border: 3px solid rgba(255, 202, 44, 0.88);
+  border-radius: 20px;
+
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.45),
+    inset 0 0 26px rgba(255, 202, 44, 0.18);
+
+  overflow: hidden;
+}
+
+/* BRILHO HOLOGRÁFICO NO CORPO INTEIRO */
+
+.dog-card-modal-shiny::before {
+  z-index: 1;
+
+  background:
+    radial-gradient(
+      circle at var(--mx) var(--my),
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 202, 44, 0.48) 12%,
+      transparent 31%
+    ),
+    linear-gradient(
+      115deg,
+      rgba(255, 72, 138, 0.28) 0%,
+      rgba(255, 202, 44, 0.52) 18%,
+      rgba(81, 255, 207, 0.34) 38%,
+      rgba(83, 178, 255, 0.36) 58%,
+      rgba(205, 105, 255, 0.32) 78%,
+      rgba(255, 202, 44, 0.42) 100%
+    );
+
+  background-size:
+    100% 100%,
+    240% 240%;
+
+  mix-blend-mode: screen;
+  opacity: 0.9;
+
+  animation: shinyHoloFlow 5.8s ease-in-out infinite;
+}
+
+/* TEXTURA FOIL EM TODA A CARTA */
+
+.dog-card-modal-shiny::after {
+  z-index: 2;
+
+  background:
+    radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.9) 0 1px, transparent 2px),
+    radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.72) 0 1px, transparent 2px),
+    radial-gradient(circle at 72% 72%, rgba(255, 255, 255, 0.65) 0 1px, transparent 2px),
+    radial-gradient(circle at 28% 82%, rgba(255, 202, 44, 0.7) 0 1px, transparent 2px),
+    repeating-linear-gradient(
+      118deg,
+      rgba(255, 255, 255, 0.2) 0 2px,
+      transparent 2px 7px
+    ),
+    repeating-linear-gradient(
+      -118deg,
+      rgba(255, 202, 44, 0.16) 0 1px,
+      transparent 1px 8px
+    );
+
+  background-size:
+    180px 180px,
+    210px 210px,
+    190px 190px,
+    170px 170px,
+    100% 100%,
+    100% 100%;
+
+  mix-blend-mode: overlay;
+  opacity: 0.72;
+
+  animation: shinyFoilMove 7s linear infinite;
+}
+
+/* BRILHO PASSANDO SOBRE TODO O CONTEÚDO */
+
+.dog-card-modal-shiny .dog-card-modal-inner::before {
+  content: "";
+  position: absolute;
+  inset: -35%;
+  z-index: 5;
+
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0%,
+      transparent 36%,
+      rgba(255, 255, 255, 0.1) 42%,
+      rgba(255, 255, 255, 0.72) 49%,
+      rgba(255, 202, 44, 0.32) 53%,
+      transparent 64%,
+      transparent 100%
+    );
+
+  transform: translateX(-68%) rotate(8deg);
+  mix-blend-mode: screen;
+  opacity: 0.85;
+
+  animation: shinyBigSweep 4.6s ease-in-out infinite;
+
+  pointer-events: none;
+}
+
+.dog-card-modal-shiny .dog-card-modal-inner > * {
+  position: relative;
+  z-index: 6;
+}
+
+/* ESTRELAS PIXELADAS ESPALHADAS */
+
+.dog-card-modal-shiny .dog-card-modal-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+
+  background:
+    radial-gradient(circle at 18% 18%, #ffffff 0 2px, transparent 3px),
+    radial-gradient(circle at 76% 14%, #ffca2c 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 42%, #ffffff 0 1.5px, transparent 3px),
+    radial-gradient(circle at 12% 58%, #ffca2c 0 1.5px, transparent 3px),
+    radial-gradient(circle at 28% 86%, #ffffff 0 2px, transparent 3px),
+    radial-gradient(circle at 82% 84%, #ffca2c 0 2px, transparent 3px);
+
+  opacity: 0.82;
+
+  animation: shinyStarsPulse 2.2s steps(2, end) infinite;
+
+  pointer-events: none;
+}
+
+/* IMAGEM SHINY MAIS PREMIUM */
+
+.dog-card-modal-shiny .dog-card-modal-image-area {
+  border-color: var(--card-dark);
+
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.72), transparent 45%),
+    radial-gradient(circle at 20% 20%, rgba(255, 202, 44, 0.52), transparent 22%),
+    linear-gradient(
+      135deg,
+      rgba(255, 242, 150, 0.78),
+      rgba(229, 255, 247, 0.72),
+      rgba(255, 230, 252, 0.68)
+    );
+
+  box-shadow:
+    inset 0 0 0 3px rgba(255, 255, 255, 0.46),
+    inset 0 0 24px rgba(255, 202, 44, 0.26),
+    5px 5px 0 rgba(3, 4, 3, 0.48);
+}
+
+.dog-card-modal-shiny .dog-card-modal-image-area::after {
+  opacity: 0.95;
+
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0%,
+      transparent 30%,
+      rgba(255, 255, 255, 0.82) 45%,
+      rgba(255, 202, 44, 0.42) 52%,
+      transparent 68%
+    );
+
+  animation: shinyImageSweep 3.2s ease-in-out infinite;
+}
+
+.dog-card-modal-shiny .dog-card-modal-image {
+  filter:
+    drop-shadow(0 10px 12px rgba(3, 4, 3, 0.3))
+    drop-shadow(0 0 10px rgba(255, 202, 44, 0.42))
+    saturate(1.12);
+}
+
+/* NOME SHINY */
+
+.dog-card-modal-shiny h2 {
+  background:
+    linear-gradient(180deg, #fff2a8 0%, #ffca2c 100%);
+
+  color: var(--card-green);
+
+  box-shadow:
+    4px 4px 0 rgba(3, 4, 3, 0.42),
+    0 0 14px rgba(255, 202, 44, 0.36);
+}
+
+/* TAGS SHINY */
+
+.dog-card-modal-shiny .dog-card-modal-tags span {
+  background: rgba(255, 255, 255, 0.58);
+  color: var(--card-green);
+  border-color: rgba(0, 77, 74, 0.12);
+}
+
+.dog-card-modal-shiny .dog-card-modal-tags .dog-card-shiny-tag {
+  background:
+    linear-gradient(135deg, #fff2a8, #ffca2c);
+
+  color: var(--card-green);
+
+  box-shadow: 0 0 10px rgba(255, 202, 44, 0.32);
+}
+
+/* INFOS SHINY */
+
+.dog-card-modal-shiny .dog-card-modal-info-grid div {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.62),
+      rgba(255, 250, 214, 0.52)
+    );
+
+  border-color: rgba(0, 77, 74, 0.13);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.38),
+    0 0 14px rgba(255, 202, 44, 0.08);
+}
+
+/* ANIMAÇÕES SHINY */
+
+@keyframes shinyHoloFlow {
+  0% {
+    background-position:
+      center,
+      0% 50%;
+    opacity: 0.78;
+  }
+
+  50% {
+    background-position:
+      center,
+      100% 50%;
+    opacity: 0.98;
+  }
+
+  100% {
+    background-position:
+      center,
+      0% 50%;
+    opacity: 0.78;
+  }
+}
+
+@keyframes shinyFoilMove {
+  0% {
+    background-position:
+      0 0,
+      20px 10px,
+      40px 30px,
+      10px 50px,
+      0 0,
+      0 0;
+  }
+
+  100% {
+    background-position:
+      120px 160px,
+      -90px 140px,
+      130px -70px,
+      -110px -120px,
+      0 0,
+      0 0;
+  }
+}
+
+@keyframes shinyBigSweep {
+  0% {
+    transform: translateX(-70%) rotate(8deg);
+    opacity: 0;
+  }
+
+  24% {
+    opacity: 0.88;
+  }
+
+  54% {
+    transform: translateX(70%) rotate(8deg);
+    opacity: 0.88;
+  }
+
+  100% {
+    transform: translateX(70%) rotate(8deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shinyStarsPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    filter: brightness(1);
+  }
+
+  50% {
+    opacity: 0.95;
+    filter: brightness(1.35);
+  }
+}
+
+@keyframes shinyImageSweep {
+  0% {
+    transform: translateX(-75%) rotate(8deg);
+    opacity: 0;
+  }
+
+  32% {
+    opacity: 0.95;
+  }
+
+  62% {
+    transform: translateX(75%) rotate(8deg);
+    opacity: 0.95;
+  }
+
+  100% {
+    transform: translateX(75%) rotate(8deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shinyCardAura {
+  0%,
+  100% {
+    box-shadow:
+      10px 10px 0 var(--card-dark),
+      0 0 0 3px rgba(255, 202, 44, 0.78),
+      0 0 18px rgba(255, 202, 44, 0.55),
+      0 0 40px rgba(255, 202, 44, 0.32),
+      0 26px 48px rgba(3, 4, 3, 0.42);
+  }
+
+  50% {
+    box-shadow:
+      10px 10px 0 var(--card-dark),
+      0 0 0 3px rgba(255, 202, 44, 1),
+      0 0 26px rgba(255, 202, 44, 0.75),
+      0 0 62px rgba(255, 202, 44, 0.45),
+      0 26px 48px rgba(3, 4, 3, 0.42);
+  }
+}
+
+/* MOBILE - SHINY BONITO, MAS MAIS LEVE */
+
+@media (max-width: 560px) {
+  .dog-card-modal-shiny {
+    animation:
+      cardEnter 0.42s ease-out,
+      shinyCardAuraMobile 5s ease-in-out infinite;
+  }
+
+  .dog-card-modal-shiny::before {
+    opacity: 0.68;
+    animation-duration: 7s;
+  }
+
+  .dog-card-modal-shiny::after {
+    opacity: 0.46;
+    animation-duration: 9s;
+  }
+
+  .dog-card-modal-shiny .dog-card-modal-inner::before {
+    animation-duration: 5.6s;
+    opacity: 0.62;
+  }
+
+  .dog-card-modal-shiny .dog-card-modal-inner::after {
+    opacity: 0.55;
+  }
+
+  .dog-card-modal-shiny .dog-card-modal-image-area::after {
+    animation-duration: 4.8s;
+    opacity: 0.68;
+  }
+}
+
+@keyframes shinyCardAuraMobile {
+  0%,
+  100% {
+    box-shadow:
+      6px 6px 0 var(--card-dark),
+      0 0 0 2px rgba(255, 202, 44, 0.8),
+      0 0 18px rgba(255, 202, 44, 0.38),
+      0 20px 40px rgba(3, 4, 3, 0.34);
+  }
+
+  50% {
+    box-shadow:
+      6px 6px 0 var(--card-dark),
+      0 0 0 2px rgba(255, 202, 44, 1),
+      0 0 28px rgba(255, 202, 44, 0.52),
+      0 20px 40px rgba(3, 4, 3, 0.34);
+  }
+}
+
+/* CARTAS NORMAIS - VARIAÇÕES AUTOMÁTICAS */
+
+.dog-card-modal-normal {
+  --card-holo-opacity: 0.48;
+  --card-line-opacity: 0.2;
+
+  border-color: var(--card-dark);
+
+  box-shadow:
+    10px 10px 0 var(--card-dark),
+    0 0 0 2px rgba(255, 253, 240, 0.45),
+    0 22px 44px rgba(3, 4, 3, 0.34);
+}
+
+.dog-card-modal-normal::before {
+  background:
+    radial-gradient(
+      circle at var(--mx) var(--my),
+      rgba(255, 255, 255, 0.76),
+      rgba(255, 255, 255, 0.18) 14%,
+      transparent 30%
+    ),
+    linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 202, 44, 0.18) 24%,
+      rgba(255, 255, 255, 0.12) 46%,
+      rgba(255, 255, 255, 0.16) 68%,
+      rgba(255, 202, 44, 0.14) 100%
+    );
+
+  mix-blend-mode: screen;
+  opacity: 0.52;
+}
+
+.dog-card-modal-normal::after {
+  background:
+    repeating-linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.12) 0 2px,
+      transparent 2px 8px
+    ),
+    radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.55) 0 1px, transparent 2px),
+    radial-gradient(circle at 82% 24%, rgba(255, 255, 255, 0.42) 0 1px, transparent 2px),
+    radial-gradient(circle at 68% 78%, rgba(255, 255, 255, 0.42) 0 1px, transparent 2px);
+
+  mix-blend-mode: overlay;
+  opacity: 0.42;
+}
+
+.dog-card-modal-normal .dog-card-modal-inner {
+  position: relative;
+
+  border: 3px solid rgba(255, 253, 240, 0.56);
+  border-radius: 20px;
+
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.16),
+    inset 0 0 24px rgba(255, 255, 255, 0.08);
+
+  overflow: hidden;
+}
+
+.dog-card-modal-normal .dog-card-modal-inner::before {
+  content: "";
+  position: absolute;
+  inset: -36%;
+  z-index: 5;
+
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0%,
+      transparent 38%,
+      rgba(255, 255, 255, 0.12) 44%,
+      rgba(255, 255, 255, 0.48) 50%,
+      transparent 62%,
+      transparent 100%
+    );
+
+  transform: translateX(-70%) rotate(8deg);
+  mix-blend-mode: screen;
+  opacity: 0.52;
+
+  animation: normalCardSweep 5.4s ease-in-out infinite;
+
+  pointer-events: none;
+}
+
+.dog-card-modal-normal .dog-card-modal-inner > * {
+  position: relative;
+  z-index: 6;
+}
+
+/* VERDE */
+
+.dog-card-normal-forest {
+  --card-main: #0f5d3c;
+  --card-second: #dff5c8;
+  --card-accent: #34b134;
+  --card-accent-dark: #004d4a;
+  --card-title-bg: #ffca2c;
+  --card-title-text: #004d4a;
+  --card-text: #004d4a;
+  --card-muted: rgba(0, 77, 74, 0.72);
+  --card-chip-bg: rgba(255, 253, 240, 0.78);
+  --card-chip-text: #004d4a;
+
+  background:
+    radial-gradient(circle at 18% 10%, rgba(255, 202, 44, 0.36), transparent 24%),
+    radial-gradient(circle at 84% 82%, rgba(52, 177, 52, 0.28), transparent 30%),
+    linear-gradient(145deg, #eaffd8 0%, #f7f4d5 48%, #bdeeb9 100%);
+}
+
+.dog-card-normal-forest .dog-card-modal-image-area {
+  background:
+    radial-gradient(circle at center, rgba(255, 202, 44, 0.34), transparent 52%),
+    linear-gradient(135deg, rgba(255, 253, 240, 0.88), rgba(213, 246, 196, 0.8));
+}
+
+/* ROSA */
+
+.dog-card-normal-rose {
+  --card-main: #cc385b;
+  --card-second: #ffe3ec;
+  --card-accent: #cc385b;
+  --card-accent-dark: #7c1631;
+  --card-title-bg: #ffca2c;
+  --card-title-text: #7c1631;
+  --card-text: #7c1631;
+  --card-muted: rgba(124, 22, 49, 0.7);
+  --card-chip-bg: rgba(255, 255, 255, 0.72);
+  --card-chip-text: #7c1631;
+
+  background:
+    radial-gradient(circle at 20% 12%, rgba(255, 202, 44, 0.34), transparent 24%),
+    radial-gradient(circle at 86% 78%, rgba(204, 56, 91, 0.28), transparent 32%),
+    linear-gradient(145deg, #fff0f5 0%, #ffe0ea 48%, #ffc2d4 100%);
+}
+
+.dog-card-normal-rose .dog-card-modal-image-area {
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.58), transparent 48%),
+    linear-gradient(135deg, rgba(255, 244, 248, 0.9), rgba(255, 207, 224, 0.78));
+}
+
+/* AZUL */
+
+.dog-card-normal-ocean {
+  --card-main: #1e2c86;
+  --card-second: #dff6ff;
+  --card-accent: #4ab8ff;
+  --card-accent-dark: #123c72;
+  --card-title-bg: #bdeeff;
+  --card-title-text: #123c72;
+  --card-text: #123c72;
+  --card-muted: rgba(18, 60, 114, 0.68);
+  --card-chip-bg: rgba(255, 255, 255, 0.72);
+  --card-chip-text: #123c72;
+
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.48), transparent 22%),
+    radial-gradient(circle at 82% 80%, rgba(74, 184, 255, 0.32), transparent 34%),
+    linear-gradient(145deg, #e9fbff 0%, #dceeff 48%, #badcff 100%);
+}
+
+.dog-card-normal-ocean .dog-card-modal-image-area {
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.6), transparent 50%),
+    linear-gradient(135deg, rgba(238, 251, 255, 0.92), rgba(197, 231, 255, 0.78));
+}
+
+/* LARANJA / DOURADO */
+
+.dog-card-normal-sunset {
+  --card-main: #ff8b3d;
+  --card-second: #fff1c1;
+  --card-accent: #ff8b3d;
+  --card-accent-dark: #804100;
+  --card-title-bg: #ffca2c;
+  --card-title-text: #804100;
+  --card-text: #804100;
+  --card-muted: rgba(128, 65, 0, 0.7);
+  --card-chip-bg: rgba(255, 255, 255, 0.72);
+  --card-chip-text: #804100;
+
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.5), transparent 22%),
+    radial-gradient(circle at 82% 82%, rgba(255, 139, 61, 0.34), transparent 34%),
+    linear-gradient(145deg, #fff7d8 0%, #ffe4ad 48%, #ffc17d 100%);
+}
+
+.dog-card-normal-sunset .dog-card-modal-image-area {
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.52), transparent 48%),
+    linear-gradient(135deg, rgba(255, 248, 218, 0.9), rgba(255, 206, 145, 0.78));
+}
+
+/* ROXO */
+
+.dog-card-normal-purple {
+  --card-main: #7b3fc7;
+  --card-second: #efe1ff;
+  --card-accent: #9f6dff;
+  --card-accent-dark: #3f1b77;
+  --card-title-bg: #e7d2ff;
+  --card-title-text: #3f1b77;
+  --card-text: #3f1b77;
+  --card-muted: rgba(63, 27, 119, 0.68);
+  --card-chip-bg: rgba(255, 255, 255, 0.72);
+  --card-chip-text: #3f1b77;
+
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.48), transparent 22%),
+    radial-gradient(circle at 82% 82%, rgba(159, 109, 255, 0.32), transparent 34%),
+    linear-gradient(145deg, #f8f0ff 0%, #ebddff 48%, #d7bdff 100%);
+}
+
+.dog-card-normal-purple .dog-card-modal-image-area {
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.58), transparent 48%),
+    linear-gradient(135deg, rgba(250, 244, 255, 0.9), rgba(219, 198, 255, 0.78));
+}
+
+/* MENTA */
+
+.dog-card-normal-mint {
+  --card-main: #00a889;
+  --card-second: #d8fff4;
+  --card-accent: #00caa3;
+  --card-accent-dark: #00594e;
+  --card-title-bg: #a8ffdf;
+  --card-title-text: #00594e;
+  --card-text: #00594e;
+  --card-muted: rgba(0, 89, 78, 0.68);
+  --card-chip-bg: rgba(255, 255, 255, 0.72);
+  --card-chip-text: #00594e;
+
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.5), transparent 22%),
+    radial-gradient(circle at 82% 82%, rgba(0, 202, 163, 0.32), transparent 34%),
+    linear-gradient(145deg, #edfff8 0%, #d5fff0 48%, #b1f4e3 100%);
+}
+
+.dog-card-normal-mint .dog-card-modal-image-area {
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.58), transparent 48%),
+    linear-gradient(135deg, rgba(242, 255, 250, 0.9), rgba(190, 248, 229, 0.78));
+}
+
+/* COMPONENTES QUE USAM AS VARIÁVEIS */
+
+.dog-card-modal-normal h2 {
+  background:
+    linear-gradient(180deg, var(--card-title-bg), color-mix(in srgb, var(--card-title-bg) 82%, white 18%));
+
+  color: var(--card-title-text);
+}
+
+.dog-card-modal-normal .dog-card-modal-tags span {
+  background: var(--card-chip-bg);
+  color: var(--card-chip-text);
+  border-color: rgba(3, 4, 3, 0.1);
+}
+
+.dog-card-modal-normal .dog-card-modal-tags .dog-card-normal-tag {
+  background:
+    linear-gradient(135deg, rgba(255, 253, 240, 0.78), rgba(255, 255, 255, 0.48));
+
+  color: var(--card-chip-text);
+}
+
+.dog-card-modal-normal .dog-card-modal-info-grid div {
+  background: rgba(255, 255, 255, 0.52);
+  border-color: rgba(3, 4, 3, 0.1);
+}
+
+.dog-card-modal-normal .dog-card-modal-info-grid span {
+  color: color-mix(in srgb, var(--card-text) 62%, white 38%);
+}
+
+.dog-card-modal-normal .dog-card-modal-info-grid strong {
+  color: var(--card-text);
+}
+
+.dog-card-modal-normal .dog-card-modal-description {
+  color: var(--card-muted);
+}
+
+@keyframes normalCardSweep {
+  0% {
+    transform: translateX(-72%) rotate(8deg);
+    opacity: 0;
+  }
+
+  28% {
+    opacity: 0.6;
+  }
+
+  54% {
+    transform: translateX(72%) rotate(8deg);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateX(72%) rotate(8deg);
+    opacity: 0;
+  }
+}
+
+/* MOBILE - NORMAL MAIS LEVE */
+
+@media (max-width: 560px) {
+  .dog-card-modal-normal::before {
+    opacity: 0.4;
+  }
+
+  .dog-card-modal-normal::after {
+    opacity: 0.32;
+  }
+
+  .dog-card-modal-normal .dog-card-modal-inner::before {
+    animation-duration: 6.8s;
+    opacity: 0.4;
+  }
+}
