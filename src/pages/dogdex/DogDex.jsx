@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-import DashboardNavbar from "../../components/dashboardNavbar/DashboardNavbar";
+import DashboardNavbar from "../../components/dashboardnavbar/DashboardNavbar";
 import DogCardModal from "../../components/dogcardmodal/DogCardModal";
 import { supabase } from "../../lib/supabase";
 
