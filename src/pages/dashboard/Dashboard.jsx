@@ -11,7 +11,7 @@ import {
   FiZap,
 } from "react-icons/fi";
 
-import DashboardNavbar from "../../components/dashboardNavbar/DashboardNavbar";
+import DashboardNavbar from "../../components/dashboardnavbar/DashboardNavbar";
 import { supabase } from "../../lib/supabase";
 import "./Dashboard.css";
 
