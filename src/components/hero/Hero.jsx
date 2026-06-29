@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import heroBg from "../../assets/hero-bg.png";
+import heroBgMobile from "../../assets/hero-bg-mobile.png";
 import "./Hero.css";
 
 export default function Hero() {
@@ -8,22 +9,25 @@ export default function Hero() {
       <img
         src={heroBg}
         alt=""
-        className="hero-bg-image"
+        className="hero-bg-image hero-bg-image-desktop"
+        aria-hidden="true"
+      />
+
+      <img
+        src={heroBgMobile}
+        alt=""
+        className="hero-bg-image hero-bg-image-mobile"
         aria-hidden="true"
       />
 
       <div className="hero-layout">
         <div className="hero-content">
           <div className="hero-kicker" aria-label="Insert coin to continue">
-            <span className="hero-kicker-star hero-kicker-star-left">
-              ✦
-            </span>
+            <span className="hero-kicker-star hero-kicker-star-left">✦</span>
 
             <span className="hero-tag">Insert Coin To Continue</span>
 
-            <span className="hero-kicker-star hero-kicker-star-right">
-              ✦
-            </span>
+            <span className="hero-kicker-star hero-kicker-star-right">✦</span>
           </div>
 
           <h1 className="hero-title">DOGDEX</h1>
@@ -41,10 +45,7 @@ export default function Hero() {
               Press Start
             </Link>
 
-            <a
-              href="/#comunidade"
-              className="hero-button hero-button-secondary"
-            >
+            <a href="/#comunidade" className="hero-button hero-button-secondary">
               Explorar
             </a>
           </div>

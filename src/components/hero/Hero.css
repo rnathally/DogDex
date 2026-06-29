@@ -53,6 +53,11 @@
   image-rendering: crisp-edges;
 }
 
+
+.hero-bg-image-mobile {
+  display: none;
+}
+
 /* Escurece mais a esquerda para o texto aparecer */
 
 .hero-section::before {
@@ -414,9 +419,14 @@
     padding: 96px 18px 60px;
   }
 
-  .hero-bg-image {
-    object-position: 42% center;
-  }
+ .hero-bg-image-desktop {
+  display: none;
+}
+
+.hero-bg-image-mobile {
+  display: block;
+  object-position: 10% bottom;
+}
 
   .hero-section::before {
     background:

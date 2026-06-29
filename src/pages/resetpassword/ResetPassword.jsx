@@ -4,7 +4,7 @@ import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 
 import Navbar from "../../components/navbar/Navbar";
 import { supabase } from "../../lib/supabase";
-import bg from "../../assets/fundo1.jpg";
+import bg from "../../assets/fundo1.jpg"; 
 
 import "../login/Login.css";
 import "./ResetPassword.css";
